@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1 class="text-center">Bem Vindo ao Sistema da Empresa SAC</h1>
+
+    <img class="img-responsive center-block" id="img_email" src="{{ asset('bundles/images/home/logo.jpg') }}" alt="" height="438" width="680">
+   
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/css/home/home.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/js/home/home.js') }}"></script>
+{% endblock %}

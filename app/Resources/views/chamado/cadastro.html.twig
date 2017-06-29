@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for flashMessage in app.session.flashbag.get('sucesso') %}  
+        <p class="alert alert-success alerta col-md-6 col-md-offset-3">
+            {{ flashMessage }}
+        </p>
+    {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('error') %}  
+        <p class="alert alert-danger alerta col-md-6 col-md-offset-3">
+            {{ flashMessage }}
+        </p>
+    {% endfor %}
+
+    <form action="{{ path('chamado-adiciona') }}" method="post">
+        <ul class="list-group col-md-6 col-md-offset-3">
+            
+            <li class="list-group-item">
+                <h1 class="text-center">Abertura de Chamado</h1>
+            </li>
+
+            <li class="list-group-item">
+
+                <h4 class="text-center">Pedido</h4>
+                <div class="form-group">
+                    <label for="pedido">Número</label>
+                    <img id="img_pedido" src="{{ asset('bundles/images/cadastro/loading.gif') }}" alt="" height="30" width="30">
+                    <span id="msg_pedido" class="alert-danger"></span>
+                    <input type="hidden" id="id_pedido" name="id_pedido">
+                    <input type="number" class="form-control" name="pedido" placeholder="Número do pedido" required>
+                </div>
+
+            </li>
+            <li class="list-group-item">
+                <h4 class="text-center">Dados do Cliente</h4>
+            
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <img id="img_email" src="{{ asset('bundles/images/cadastro/loading.gif') }}" alt="" height="30" width="30">
+                    <span id="msg_email" class="alert-warning"></span>
+                    <input type="hidden" id="id_cliente" name="id_cliente">
+                    <input type="email" class="form-control" name="email" placeholder="Email do cliente" required>
+                </div>
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" placeholder="Nome do cliente" required>
+                </div>
+
+            </li>
+            
+            <li class="list-group-item">
+                <h4 class="text-center">Informações do Chamado</h4>
+                <div class="form-group">
+                    <label for="titulo">Título</label>
+                    <input type="text" class="form-control" name="titulo" placeholder="Título do chamado" required>
+                </div>
+                <div class="form-group">
+                    <label for="observacao">Observação</label>
+                    <textarea class="form-control" name="observacao" rows="3"></textarea>
+                </div>
+            </li>
+            
+            <li class="list-group-item">
+                <button type="submit" class="btn btn-lg btn-primary" name="cadastrar">Cadastrar</button>
+            </li>
+
+        </ul>
+    </form>
+    
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/css/cadastro/cadastro.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/js/cadastro/cadastro.js') }}"></script>
+{% endblock %}

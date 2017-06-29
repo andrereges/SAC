@@ -1,0 +1,135 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="clientes")
+ */
+class Cliente {
+
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=false, unique=true)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=false)
+     */
+    private $nome;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Chamado", mappedBy="cliente")
+     */
+    protected $chamados;
+
+    public function __construct($email= '', $nome= ''){
+
+        $this->email = $email;
+        $this->nome = $nome;
+
+        $this->chamados = new ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Cliente
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set nome
+     *
+     * @param string $nome
+     *
+     * @return Cliente
+     */
+    public function setNome($nome)
+    {
+        $this->nome = $nome;
+
+        return $this;
+    }
+
+    /**
+     * Get nome
+     *
+     * @return string
+     */
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    /**
+     * Add chamado
+     *
+     * @param \AppBundle\Entity\Chamado $chamado
+     *
+     * @return Cliente
+     */
+    public function addChamado(\AppBundle\Entity\Chamado $chamado)
+    {
+        $this->chamados[] = $chamado;
+
+        return $this;
+    }
+
+    /**
+     * Remove chamado
+     *
+     * @param \AppBundle\Entity\Chamado $chamado
+     */
+    public function removeChamado(\AppBundle\Entity\Chamado $chamado)
+    {
+        $this->chamados->removeElement($chamado);
+    }
+
+    /**
+     * Get chamados
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChamados()
+    {
+        return $this->chamados;
+    }
+}

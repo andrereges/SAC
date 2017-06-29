@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1 class="text-center">Listagem de Chamados</h1>
+    
+    <table class="table table table-striped table-bordered table-hover">
+       
+        <form action="{{ path('chamado-lista') }}" method="GET">
+            <button id="limpaFiltro" class="btn btn-danger pull-right">
+                Limpar Filtro <span class="glyphicon glyphicon-remove"> </span>
+            </button>
+            <thead>
+                <th>Id</th>
+                <th>
+                    <span id="iconFiltroPorPedido">
+                        Num. do Pedido
+                        <span class="glyphicon glyphicon-filter"></span>
+                    </span>
+                    
+                        <input type="number" value="{{ pedido_numero }}" class="form-control" id="filtroPorPedido" name="filtroPorPedido" placeholder="Filtrar">
+                        <button id="btn-pedido" class="btn btn-success pull-right">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                                            
+                </th>
+                <th>
+                    <span id="iconFiltroPorEmail">
+                        Email Cliente
+                        <span class="glyphicon glyphicon-filter"></span>
+                    </span>
+                    
+                    <input type="email" value="{{ email }}" class="form-control" id="filtroPorEmail" name="filtroPorEmail" placeholder="Filtrar">
+                    <button id="btn-email" class="btn btn-success pull-right">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </th>
+                <th>Nome</th>
+                <th>Título</th>
+                <th>Descrição</th>
+            </thead>
+        </form>
+        
+        <tbody>
+            
+            {% if chamados is null %}
+                <tr class="text-center">
+                    <td colspan="6">Nenhum chamado encontrado.</td>
+                </tr>
+            {% endif %}
+
+            {% for chamado in chamados %}
+                <tr>
+                <td>{{ chamado.id }}</td>
+                <td>{{ chamado.pedido.numero }}</td>
+                <td>{% filter lower %}{{ chamado.cliente.email }}{% endfilter %}</td>
+                <td>{{ chamado.cliente.nome |capitalize }}</td>
+                <td>{{ chamado.titulo |capitalize }}</td>
+                <td>{{ chamado.observacao |capitalize }}</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+ 
+    <nav aria-label="Page navigation">
+       
+        <ul class="pagination pull-right">
+            
+            {% if pagina_atual > 1 %}
+                <li>
+                    <a href="{{ path('chamado-lista', {'pagina': pagina_atual - 1, 'filtroPorPedido': pedido_numero, 'filtroPorEmail': email } ) }}" aria-label="Previous">  
+                        <span aria-hidden="true">&laquo;</span>     
+                    </a>
+                </li>
+            {% endif %}
+            
+            {% for indice in 1..qtd_paginas %}
+                    <li><a href="{{ path('chamado-lista', {'pagina': indice, 'filtroPorPedido': pedido_numero, 'filtroPorEmail': email } ) }}">{{ indice }}</a></li>
+            {% endfor %}
+
+            {% if pagina_atual < qtd_paginas %}
+                <li>
+                    <a href="{{ path('chamado-lista', {'pagina': pagina_atual + 1, 'filtroPorPedido': pedido_numero, 'filtroPorEmail': email } ) }}" aria-label="Next">        
+                        <span aria-hidden="true">&raquo;</span> 
+                    </a>
+                </li>
+            {% endif %}
+
+        </ul>
+        
+    </nav>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/css/lista/lista.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/js/lista/lista.js') }}"></script>
+{% endblock %}
