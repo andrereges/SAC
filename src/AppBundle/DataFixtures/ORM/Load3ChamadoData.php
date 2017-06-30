@@ -15,27 +15,37 @@ class Load3ChamadoData implements FixtureInterface
     {   
 
         $numeros = array(   130, 
-                            121, 
-                            122, 
-                            130, 
+                            121,
+                            122,
+                            130,
                             125,
                             122,
                             122,
                             128,
-                            129,
+                            129, 
                             121,
+                            123, 
+                            126,
+                            124,
+                            127
+
                         );
 
-        $emails = array(    'nazevedo@gmail.com', 
+        $emails = array(    'nazevedo@gmail.com',
                             'wsafadao@gmail.com', 
-                            'glima@gmail.com', 
-                            'ecosta@gmail.com', 
+                            'glima@gmail.com',
+                            'ecosta@gmail.com',
                             'phenrique@gmail.com',
                             'wsafadao@gmail.com',
                             'ecosta@gmail.com',
                             'phenrique@gmail.com',
                             'mmendonca@gmail.com',
-                            'lsantana@gmail.com'
+                            'lsantana@gmail.com',
+                            'jneto@gmail.com',
+                            'llima@gmail.com',
+                            'zdcamargo@gmail.com',
+                            'mmendonca@gmail.com' 
+
                         );
 
         $titulos = array(   'Monitor não liga', 
@@ -47,7 +57,11 @@ class Load3ChamadoData implements FixtureInterface
                             'Botão do mouse quebrado',
                             'Roteador não liga',
                             'Tablet não carrega bateria',
-                            'Antena de roteador ruim'
+                            'Antena de roteador ruim',
+                            'Monitor com led piscando',
+                            'Botão do mouse quebrado',
+                            'Antena de roteador ruim',
+                            'Mouse com problemas'
                         );
         
         $observacoes = array(   'Efetuado todos os testes mas sem sucesso', 
@@ -59,13 +73,17 @@ class Load3ChamadoData implements FixtureInterface
                                 'Efetuado troca do mouse',
                                 'Efetuado testes, mas sem sucesso',
                                 'Trocado fonte de alimentação',
-                                'Trocado roteador'
+                                'Trocado roteador',
+                                'Efetuado todos os testes mas sem sucesso',
+                                'Encaminhado para assistência técnica',
+                                'Trocado roteador',
+                                'Efetuado troca do mouse'
                         );
 
 
         $chamados = array();
 
-        for($i= 0; $i < 10; $i++) {
+        for($i= 0; $i < 13; $i++) {
 
             $cliente = $manager->getRepository('AppBundle:Cliente')->findOneByEmail($emails[$i]);
             $pedido = $manager->getRepository('AppBundle:Pedido')->findOneByNumero($numeros[$i]);

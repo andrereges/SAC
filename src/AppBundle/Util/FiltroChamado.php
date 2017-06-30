@@ -20,7 +20,7 @@ class FiltroChamado {
         $pedido = $this::getPedidoNoBD($pedido_numero);
 
         // Verifica se existe a query foi construída
-        $isQuery = $this::isExisteQuery($email, $pedido_numero, $cliente, $pedido);
+        $isQuery = $this::existeQuery($email, $pedido_numero, $cliente, $pedido);
 
         // Retorna a query nula ou com os valores
         if(!$isQuery) {
@@ -58,7 +58,7 @@ class FiltroChamado {
         return null;
     }
     
-    private function isExisteQuery($email, $pedido_numero, $cliente, $pedido){
+    private function existeQuery($email, $pedido_numero, $cliente, $pedido){
 
         if(($cliente && $pedido) 
             || ($cliente || $pedido) 
@@ -66,6 +66,7 @@ class FiltroChamado {
             
             if($cliente && $pedido || (!$email || !$pedido_numero)) {
 
+                return true;
                 
             }else {
                 return false;
@@ -75,7 +76,7 @@ class FiltroChamado {
             return false;
         }
 
-        return true;
+        
     }
     
     private function escolheQueryCorreta($cliente, $pedido) {
