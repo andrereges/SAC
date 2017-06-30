@@ -11,10 +11,10 @@
         <title>{% block title %}SAC{% endblock %}</title>
 
         <!-- Bootstrap Core CSS -->
-        <link rel="stylesheet" href="{{ asset('bundles/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
 
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="{{ asset('bundles/css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
 
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
@@ -80,14 +80,14 @@
     </body>
     
     <!-- jQuery -->
-    <script src="{{ asset('bundles/js/jquery.js') }}"></script>
+    <script src="{{ asset('public/js/jquery.js') }}"></script>
     
     <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('bundles/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
     
     <!-- My javascript file --> 
     
-    <script src="{{ asset('bundles/js/app.js') }}"></script>
+    <script src="{{ asset('public/js/app.js') }}"></script>
 
     {% block javascripts %}{% endblock %}
 

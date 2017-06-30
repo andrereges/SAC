@@ -29,7 +29,7 @@ class Cliente {
     private $nome;
 
     /**
-     * @ORM\OneToMany(targetEntity="Chamado", mappedBy="cliente", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Chamado", mappedBy="cliente")
      */
     protected $chamados;
 
@@ -39,11 +39,6 @@ class Cliente {
         $this->nome = $nome;
 
         $this->chamados = new ArrayCollection();
-    }
-
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 
     /**

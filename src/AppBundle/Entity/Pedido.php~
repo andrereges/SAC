@@ -35,11 +35,6 @@ class Pedido {
         $this->chamados = new ArrayCollection();
     }
 
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
     /**
      * Get id
      *

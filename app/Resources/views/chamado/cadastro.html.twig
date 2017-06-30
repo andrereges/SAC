@@ -26,7 +26,7 @@
                 <h4 class="text-center">Pedido</h4>
                 <div class="form-group">
                     <label for="pedido">Número</label>
-                    <img id="img_pedido" src="{{ asset('bundles/images/cadastro/loading.gif') }}" alt="" height="30" width="30">
+                    <img id="img_pedido" src="{{ asset('public/images/cadastro/loading.gif') }}" alt="" height="30" width="30">
                     <span id="msg_pedido" class="alert-danger"></span>
                     <input type="hidden" id="id_pedido" name="id_pedido">
                     <input type="number" class="form-control" name="pedido" placeholder="Número do pedido" required>
@@ -38,7 +38,7 @@
             
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <img id="img_email" src="{{ asset('bundles/images/cadastro/loading.gif') }}" alt="" height="30" width="30">
+                    <img id="img_email" src="{{ asset('public/images/cadastro/loading.gif') }}" alt="" height="30" width="30">
                     <span id="msg_email" class="alert-warning"></span>
                     <input type="hidden" id="id_cliente" name="id_cliente">
                     <input type="email" class="form-control" name="email" placeholder="Email do cliente" required>
@@ -72,9 +72,9 @@
 {% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/css/cadastro/cadastro.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/cadastro/cadastro.css') }}">
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('bundles/js/cadastro/cadastro.js') }}"></script>
+    <script src="{{ asset('public/js/cadastro/cadastro.js') }}"></script>
 {% endblock %}

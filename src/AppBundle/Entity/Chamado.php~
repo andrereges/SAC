@@ -19,13 +19,13 @@ class Chamado {
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Pedido", mappedBy="chamado")
+     * @ORM\ManyToOne(targetEntity="Pedido", inversedBy="pedido")
      * @ORM\JoinColumn(name="pedido_id", referencedColumnName="id")
      */
     protected $pedido;
 
     /**
-     * @ORM\OneToOne(targetEntity="Cliente", mappedBy="chamado")
+     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="cliente", cascade={"persist"})
      * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id")
      */
     protected $cliente;
@@ -39,7 +39,8 @@ class Chamado {
      * @ORM\Column(type="text")
      */
     private $observacao;
-    
+
+
     /**
      * Get id
      *
