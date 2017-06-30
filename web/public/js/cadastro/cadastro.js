@@ -15,6 +15,7 @@ $(document).ready(function() {
             $.get( getRootPath() + "/pedido/" + pedido, function(res) {
                 $("#img_pedido").attr('src','/public/images/cadastro/positivo.jpg');
                 $( "#id_pedido" ).val(res['id']);
+                $('#msg_pedido').hide();
             })
             .done(function() {
                 
@@ -23,6 +24,7 @@ $(document).ready(function() {
                 $("#img_pedido").attr('src','/public/images/cadastro/negativo.jpg');
                 $('#msg_pedido').html('Pedido não encontrado!');
                 $( "#id_pedido" ).val('');
+                $('#msg_pedido').show();
             })
             .always(function() {
 
@@ -47,7 +49,9 @@ $(document).ready(function() {
             $.get( getRootPath() + "/cliente/" + email, function(res) {
                 $("#img_email").attr('src','/public/images/cadastro/positivo.jpg');
                 $( "#id_cliente" ).val(res['id']);
-                $( "input[name='nome']" ).val(res['nome']);              
+                $( "input[name='nome']" ).val(res['nome']);  
+                $('#msg_email').hide();
+                            
             })
             .done(function() {
                 
@@ -57,6 +61,7 @@ $(document).ready(function() {
                 $('#msg_email').html('Cliente ainda não cadastrado! Ele será cadastrado automaticamente');
                 $( "input[name='nome']" ).val('');
                 $( "#id_cliente" ).val('');
+                $('#msg_email').show();
             })
             .always(function() {
                 
